@@ -5,12 +5,17 @@
 @function:
 test ping 
 '''
+import logging
+from core import config
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from databases.mysql_model import TestModel
 from databases.mongo_model import TestCol
 from schemas.test_item import TestInItem, TestOutItem, ResponseItem
 
+
+logger = logging.getLogger(config.PROJECT_NAME)
 router = APIRouter()
 
 
@@ -45,5 +50,6 @@ async def create_item(item: TestInItem, db: TestCol=Depends()):
 
 @router.get("/testmongo/{name}")
 async def create_item(name: str, db: TestCol=Depends()):
+    logger.info('testmongo name')
     item = db.find_lang(name)
     return item

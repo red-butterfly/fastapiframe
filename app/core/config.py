@@ -15,3 +15,6 @@ PROJECT_NAME = os.getenv("PROJECT_NAME")
 BACKEND_CORS_ORIGINS = os.getenv(
     "BACKEND_CORS_ORIGINS"
 )  # a string of origins separated by commas, e.g: "http://localhost, http://localhost:4200, http://localhost:3000, http://localhost:8080, http://local.dockertoolbox.tiangolo.com"
+
+LOG_LEVEL = os.environ.get('LOG_LEVEL') or 'info'
+LOGFILE_PATH = os.environ.get('LOG_PATH') if os.environ.get('LOG_PATH') else './logs'

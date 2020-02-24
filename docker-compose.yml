@@ -12,8 +12,9 @@ services:
       - WORKERS_PER_CORE=0.5           #worker_processes = WORKERS_PER_CORE*CPU cores
       - APP_MODULE=main:app
       - LOG_LEVEL=info
-      - HOST_PATH=/var/appdata          #日志目录
+      - LOG_PATH=/var/log          #日志目录
       - RUN_ENV=dev                     # dev:开发环境; pro:生产环境;
     volumes:
       - ./app:/app
+      - ./logs:/var/log
 
